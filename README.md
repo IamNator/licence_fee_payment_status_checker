@@ -1,5 +1,5 @@
 # licence_fee_payment_status_checker
-This part of a packing lot management software, It is an API (application Program Interface) that exposes endpoints allowing users(pakcing lot officers) to add new subscribers (cars), identiy and flag defaulters (non-subscribers using the parking lot).  
+This is part of a packing lot management software, It is an API (application Program Interface) that exposes endpoints allowing users(pakcing lot officers) to add new subscribers (cars), identiy and flag defaulters (non-subscribers using the parking lot).  
   
 # Endpoints  
 POSTMAN DOCUMENTATION = https://www.getpostman.com/collections/133f448fed78751ce2ff    
