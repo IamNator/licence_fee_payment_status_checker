@@ -1,8 +1,13 @@
 # licence_fee_payment_status_checker
 This part of a packing lot management software, It is an API (application Program Interface) that exposes endpoints allowing users(pakcing lot officers) to add new subscribers (cars), identiy and flag defaulters (non-subscribers using the parking lot).  
   
-# Endpoints
-Get all subscribers (both paid and defaulter) in a parking lot.
+# Endpoints  
+POSTMAN DOCUMENTATION = https://www.getpostman.com/collections/133f448fed78751ce2ff    
+
+1. Get all Subscribers  
+
+Get all subscribers (both paid and defaulter) in a parking lot.  
+Base URL = https://mawakif.herokuapp.com
 ```json
 method - GET
 url - https://mawakif.herokuapp.com/api/subscribers
@@ -34,23 +39,13 @@ an example of response returned
 |code                   | standard http status code                    |
 |data                   | this contains the data/resource requested for|
 
-# licence_fee_payment_status_checker
-2
-​
-3
-    
-4
-URL = https://mawakif.herokuapp.com
-5
+
+
    
-6
-POSTMAN DOCUMENTATION = https://www.getpostman.com/collections/133f448fed78751ce2ff
-7
-  ```
-  1. Endpoint for the Pi robot
+2. Endpoint for the Pi robot
 - send the car plate number, packing space id, current time.
 - returns status ok
-
+```
 /api/plate
 POST 
 {
@@ -63,12 +58,13 @@ POST
 returns 
 STATUS -  200 OK
 {}
-
+```
 
 2. Endpoint for employees
 - sends car plate number, status, current time.
 -  returns status created if non exists, or status ok if it's updates a vehicle.
 
+```
 /api/subscribers/add
 POST
 {
@@ -81,11 +77,12 @@ status - 200/201
 {
     message: "user registered"/ "user registration updated"
 }
+```
 
 3. Endpoint for web interface 
 - request for list of cars 
 - returns a list of cars recorded by the employees and robot and their status
-
+```
 /api/subscribers
 GET
 
@@ -99,10 +96,12 @@ returns
     },
     ...
 ]
-
+```
 
 4. Endpoint for admin
--  sets expiration duration 
+-  sets ricket expiration duration 
+
+```
 /api/admin/ticket-duration
 PUT
 {
@@ -111,14 +110,15 @@ PUT
 
 returns 
 STATUS 200 OK if successful.
-
+```
 Explanation:
 
 When an employee records a paid user(car owner), the current time is designated as start time and status is 
 true. If a car is detected by the robot and it's status is false, it does not exist in records or presence exceeds ticket duration (reset),  
 the car is said to be unpaid thus this is recorded  or updated in database with a default start time of zero and a false status.
 
-5. An endpoint that returns Packing space Checks
+5. An endpoint that returns Packing space Checks   
+```
 GET 
 /api/checks
 
@@ -133,9 +133,11 @@ STATUS 200 OK
 
     }
 ]
+```
 
 6. An endpoint that add and another that returns a list of packing space and their designation
 
+```
 GET
 
 /api/space 
@@ -148,7 +150,9 @@ returns
     }, 
     ...
 ]
+```
 
+```
 POST
 
 /api/space 
@@ -161,39 +165,23 @@ returns
     }, 
     ...
 ]
+```
 
-///////
-Create another database that logs events of image checks... (even if no plate number is detected)
+## TABLE 1  - subscribers
+contains id, plate_number, packing_space_id, start_time, status. It keeps a record all the subscribers (both paid and defaulters).  
 
+## TABLE 2 - checks   
+contains id, is_empty, plate_number, packing_space_id, created_at. Data uploaded from the robot is logged here.
 
+## TABLE 3 -  packing_space
+contains id, designation. It keeps a record of special designation of each packing space.
 
-TABLE 1  - subscribers
-id, plate_number, packing_space_id, start_time, status
-
-TABLE 2 - checks
-id, is_empty, plate_number, packing_space_id, created_at
-
-TABLE 3 -  packing_space
-id, designation
-
-TABLE 4 - config
-id, name, value
+## TABLE 4 - config
+contains the id, name, value e.g TICKET_DURATION
  
-
-note 3: has records of the different packing space that exists
   ```
-8
-​
-9
-​
-10
-        
-
-
-
     
 URL = https://mawakif.herokuapp.com   
-   
 POSTMAN DOCUMENTATION = https://www.getpostman.com/collections/133f448fed78751ce2ff
 
 
