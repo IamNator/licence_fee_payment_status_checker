@@ -42,7 +42,7 @@ an example of response returned
 
 
    
-## 2. Endpoint for the Pi robot   
+## 2. Endpoint for the Pi robot - log checks
 - send the car plate number, packing space id, current time.
 - returns status ok
 ```
@@ -60,7 +60,7 @@ STATUS -  200 OK
 {}
 ```
 
-## 3. Endpoint for employees   
+## 3. Endpoint for employees  - add subscribers
 - sends car plate number, status, current time.
 -  returns status created if non exists, or status ok if it's updates a vehicle.
 
@@ -79,7 +79,7 @@ status - 200/201
 }
 ```
 
-## 4. Endpoint for web interface  
+## 4. Endpoint for web interface - get all subscribers
 - request for list of cars 
 - returns a list of cars recorded by the employees and robot and their status
 ```
@@ -98,7 +98,7 @@ returns
 ]
 ```
 
-## 5. Endpoint for admin   
+## 5. Endpoint for admin  - change ticket time validity
 -  sets ricket expiration duration 
 
 ```
@@ -117,7 +117,7 @@ When an employee records a paid user(car owner), the current time is designated 
 true. If a car is detected by the robot and it's status is false, it does not exist in records or presence exceeds ticket duration (reset),  
 the car is said to be unpaid thus this is recorded  or updated in database with a default start time of zero and a false status.
 
-## 6. An endpoint that returns Packing space Checks    
+## 6. An endpoint that returns Packing space Checks - get all logged checks   
 ```
 GET 
 /api/checks
@@ -135,7 +135,7 @@ STATUS 200 OK
 ]
 ```
 
-## 7. An endpoint that add and another that returns a list of packing space and their designation  
+## 7. returns a list of packing space and their designation  
 
 ```
 GET
@@ -152,6 +152,7 @@ returns
 ]
 ```
 
+## 7. change (add or update) packing space and their designation  
 ```
 POST
 
