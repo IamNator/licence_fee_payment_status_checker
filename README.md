@@ -4,7 +4,7 @@ This is part of a packing lot management software, It is an API (application Pro
 # Endpoints  
 POSTMAN DOCUMENTATION = https://www.getpostman.com/collections/133f448fed78751ce2ff    
 
-1. Get all Subscribers  
+## 1. Get all Subscribers    
 
 Get all subscribers (both paid and defaulter) in a parking lot.  
 Base URL = https://mawakif.herokuapp.com
